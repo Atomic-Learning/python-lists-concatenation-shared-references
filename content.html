@@ -1,0 +1,68 @@
+
+<p>When you concatenate lists using the <code class="language-python">+</code> operator, the new list contains the same items as the original lists. This creates an important behavior: if those items are mutable (like nested lists), modifications to them would be seen by all lists that reference those items.</p>
+
+<h2>Understanding Persistent References</h2>
+
+<p>Concatenation creates a new list, but the items <em>inside</em> the lists are not copied—they are the same objects. This is called a "shallow copy" behavior:</p>
+
+<py-cell>list1 = [[1, 2], [3, 4]]
+list2 = [[5, 6], [7, 8]]
+combined = list1 + list2
+
+print(combined)
+print(hex(id(combined[0])))  # Show memory address of first nested list in combined
+print(hex(id(list1[0])))     # Show memory address of first nested list in list1
+</py-cell>
+
+In the example above, <code class="language-python">combined[0]</code> and <code class="language-python">list1[0]</code> refer to the same list object in memory.
+
+<h2>Modifying Nested Items Affects All References</h2>
+
+<p>Since <code class="language-python">combined[0]</code> and <code class="language-python">list1[0]</code> refer to the same nested list object, modifying one affects the other:</p>
+
+<py-cell>list1 = [[1, 2], [3, 4]]
+list2 = [[5, 6], [7, 8]]
+combined = list1 + list2
+
+print("Before modification:")
+print("list1:", list1)
+print("combined:", combined)
+print(hex(id(combined[0])))  # Show memory address of first nested list in combined
+print(hex(id(list1[0])))     # Show memory address of first nested list in list1
+
+combined[0][0] = 10
+
+print("After modifying combined[0][0]:")
+print("list1:", list1)
+print("combined:", combined)</py-cell>
+
+<p>Notice that <code class="language-python">list1[0][0]</code> changed to 10 even though we modified <code class="language-python">combined</code>. This happens because <code class="language-python">combined[0]</code> and <code class="language-python">list1[0]</code> point to the same list object.</p>
+
+<h2>Comparison with Item Assignment</h2>
+
+<p>If we had instead assigned a new value to an item in <code>combined</code>, it would not affect <code>list1</code>:</p>
+
+<py-cell>list1 = [1, 2, 3]
+list2 = [4, 5, 6]
+combined = list1 + list2
+
+print("Before assignment:")
+print("list1:", list1)
+print("combined:", combined)
+
+combined[0] = 10
+
+print("After assigning combined[0] = 10:")
+print("list1:", list1)
+print("combined:", combined)</py-cell>
+
+This is because, when we write <code class="language-python">combined[0] = 10</code>, we are changing the reference in <code class="language-python">combined</code> to point to a new integer object (10), while <code class="language-python">list1[0]</code> still points to the original integer (1). In contrast, when we modified <code class="language-python">combined[0][0]</code>, we were modifying the contents of the nested list that both <code class="language-python">combined[0]</code> and <code class="language-python">list1[0]</code> reference.
+
+<h2>Why This Matters</h2>
+
+<p>This behavior is important to understand when:</p>
+<ul>
+<li><strong>Working with nested mutable structures:</strong> Lists containing lists, dictionaries, or other mutable objects</li>
+<li><strong>Building lists from multiple sources:</strong> Concatenating lists and then modifying nested items</li>
+<li><strong>Avoiding unintended side effects:</strong> Changes in one list affecting another due to shared references</li>
+</ul>
