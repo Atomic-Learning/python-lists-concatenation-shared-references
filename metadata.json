@@ -11,7 +11,7 @@
     "duration": 6,
     "prerequisites": [
         "python-lists-concatenation",
-        "python-lists-item-assignment",
+        "python-item-assignment",
         "python-nested-collections",
         "python-object-identity",
         "python-strings-introduction",
