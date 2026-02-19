@@ -14,9 +14,9 @@
         "python-lists-item-assignment",
         "python-nested-collections",
         "python-object-identity",
-        "python-strings-introduction"
+        "python-strings-introduction",
+        "python-mutable-immutable-types"
     ],
     "related": [
-        "python-mutable-immutable-types"
     ]
 }
