@@ -1,6 +1,6 @@
 {
     "title": "Python: List Concatenation and Shared References",
-    "slug": "python-concatenation-shared-references",
+    "slug": "python-list-concatenation-shared-references",
     "description": "Understanding how concatenated lists share references to mutable items. Covers shallow copying behavior, how modifications to nested mutable items affect all referencing lists, and why this matters for working with complex data structures.",
     "authors": [
         "chris-cooling"
