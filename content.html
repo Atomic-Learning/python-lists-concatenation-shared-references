@@ -1,5 +1,5 @@
 
-<p>When you concatenate lists using the <code class="language-python">+</code> operator, the new list contains the same items as the original lists. This creates an important behavior: if those items are mutable (like nested lists), modifications to them would be seen by all lists that reference those items.</p>
+<p>When you concatenate lists using the <code class="language-python">+</code> operator, the new list contains the same items as the original lists. This creates an important behavior: if those items are mutable (such as another list), modifications to them would be seen by all lists that reference those items.</p>
 
 <h2>Understanding Persistent References</h2>
 
@@ -56,7 +56,7 @@ print("After assigning combined[0] = 10:")
 print("list1:", list1)
 print("combined:", combined)</py-cell>
 
-This is because, when we write <code class="language-python">combined[0] = 10</code>, we are changing the reference in <code class="language-python">combined</code> to point to a new integer object (10), while <code class="language-python">list1[0]</code> still points to the original integer (1). In contrast, when we modified <code class="language-python">combined[0][0]</code>, we were modifying the contents of the nested list that both <code class="language-python">combined[0]</code> and <code class="language-python">list1[0]</code> reference.
+This is because, when we write <code class="language-python">combined[0] = 10</code>, we are changing the reference in <code class="language-python">combined</code> to point to a new integer object (<code>10</code>), while <code class="language-python">list1[0]</code> still points to the original integer (<code>1</code>). In contrast, when we modified <code class="language-python">combined[0][0]</code>, we were modifying the contents of the nested list that both <code class="language-python">combined[0]</code> and <code class="language-python">list1[0]</code> reference.
 
 <h2>Why This Matters</h2>
 
