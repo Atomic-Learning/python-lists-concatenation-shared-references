@@ -27,8 +27,6 @@ combined = list1 + list2
 print("Before modification:")
 print("list1:", list1)
 print("combined:", combined)
-print(hex(id(combined[0])))  # Show memory address of first nested list in combined
-print(hex(id(list1[0])))     # Show memory address of first nested list in list1
 
 combined[0][0] = 10
 
